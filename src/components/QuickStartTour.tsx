@@ -66,7 +66,7 @@ export function QuickStartTour({ open, onClose }: { open: boolean; onClose: () =
   const [step, setStep] = useState(0);
   if (!open) return null;
 
-  const current = STEPS[step];
+  const current = STEPS[step]!;
   const Icon = current.icon;
   const last = step === STEPS.length - 1;
 
