@@ -57,7 +57,7 @@ export function OutputPanel({
   loading: boolean;
   error: string | null;
   onRetry: () => void;
-  isMock?: boolean;
+  isMock?: boolean | undefined;
   emptyHint: string;
 }) {
   return (
@@ -144,7 +144,7 @@ export function CopyButton({ text, label = "Copy" }: { text: string; label?: str
   );
 }
 
-export function RegenerateButton({ onClick, disabled }: { onClick: () => void; disabled?: boolean }) {
+export function RegenerateButton({ onClick, disabled }: { onClick: () => void; disabled?: boolean | undefined }) {
   return (
     <Button type="button" variant="outline" size="sm" onClick={onClick} disabled={disabled}>
       <RefreshCw className="size-4" aria-hidden="true" /> Regenerate
@@ -161,7 +161,7 @@ export function OutputSection({ title, children }: { title: string; children: Re
   );
 }
 
-export function BulletList({ items }: { items?: string[] }) {
+export function BulletList({ items }: { items?: string[] | undefined }) {
   if (!items?.length) return <p className="text-muted-foreground">None identified.</p>;
   return (
     <ul className="space-y-1.5">
@@ -175,7 +175,7 @@ export function BulletList({ items }: { items?: string[] }) {
   );
 }
 
-export function VerifyNote({ children }: { children?: ReactNode }) {
+export function VerifyNote({ children }: { children?: ReactNode | undefined }) {
   return (
     <p className="flex items-start gap-2 rounded-lg border border-border bg-card/70 p-3 text-xs leading-relaxed text-muted-foreground">
       <ShieldCheck className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
@@ -196,10 +196,10 @@ export function Field({
   children,
 }: {
   label: string;
-  required?: boolean;
-  hint?: string;
+  required?: boolean | undefined;
+  hint?: string | undefined;
   htmlFor: string;
-  error?: string;
+  error?: string | undefined;
   children: ReactNode;
 }) {
   return (
